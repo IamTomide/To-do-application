@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: hsl(0, 100%, 98%);
+    font-family: "Josefin Sans", sans-serif;
+}
+header {
+    background-image: url(images/bg-mobile-light.jpg);
+    background-repeat: no-repeat;
+    height: 200px;
+}
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.box-container {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 450px;
+}
+
+h2{
+    color: hsl(0, 100%, 98%);
+    padding-top: 2em;
+}
+
+input {
+    width: 100%;
+    margin-top: 2em;
+    padding: 1em;
+    border-radius: 5px;
+    border: none;
+}
+
+input:hover {
+    border: solid 2px rgb(2, 82, 187);
+    background-color: hsl(225, 29%, 97%);
+    outline: none;
+}
+
+input:focus {
+    border: solid 2px rgb(2, 82, 187);
+    outline-color: hsl(236, 33%, 92%);
+}
+
+.tasks {
+    background-color: white;
+    margin-top: -2em;
+    border-radius: 5px;
+    border: none;
+}
+
+ul{
+    padding: 0;
+}
+
+ul li{
+    list-style: none;
+    padding: 1em 5em 1em 2.5em;
+    user-select: none;
+    position: relative;
+}
+
+li{
+    border-bottom: solid 1px lightgrey;
+}
+
+li::before{
+    content: '';
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    border: solid 1px lightgrey;
+    top: 16px;
+    left: 14px;
+}
+
+
+li::after {
+    content: '';
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    top: 16px;
+    right: 12px;
+    background-image: url(/images/icon-cross.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin-top: 0.5em;
+    font-size: 0.75rem;
+} 
+
+.bottom-div {
+    justify-content: space-evenly;
+    padding: 0.5em 3em;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    width: 90%;
+    max-width: 450px;
+    margin: 1em auto 0;
+    background-color: white;
+}
+
+.mid-opt {
+    display: none;
+} 
+
+@media (min-width:376px) {
+    header {
+        background-image: url(images/bg-desktop-light.jpg);
+        background-repeat: no-repeat;
+        /* background-size: cover; */
+    }
+
+    .mid-opt {
+        display: flex;
+        justify-content: center;
+    } 
+
+    .mid-opt p {
+        margin: 0 0.5em;
+    }
+
+    .bottom-div {
+        display: none;
+    }
+}
