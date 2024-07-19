@@ -9,6 +9,7 @@ body{
 header {
     background-image: url(images/bg-mobile-light.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
     height: 200px;
 }
 
@@ -154,7 +155,7 @@ img:last-child{
     display: none;
 } 
 
-@media (min-width:376px) {
+@media (min-width:500px) {
     header {
         background-image: url(images/bg-desktop-light.jpg);
         background-repeat: no-repeat;
