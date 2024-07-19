@@ -94,6 +94,7 @@ function clearCompleted() {
         }
     })
     itemcounter();
+    showAllTasks();
 }
 
 function cancelTask(event) {
@@ -146,6 +147,7 @@ function showTaskList(){
     taskList.innerHTML = localStorage.getItem("data");
     checkaction();
     itemcounter();
+    showAllTasks();
 }
 
 showTaskList();
