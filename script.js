@@ -93,6 +93,7 @@ function clearCompleted() {
             element.remove();
         }
     })
+    itemcounter();
 }
 
 function cancelTask(event) {
