@@ -59,6 +59,7 @@ input:focus {
     margin-top: -2em;
     border-radius: 5px;
     border: none;
+    box-shadow: 0px 15px 25px rgba(54, 54, 55, 0.116);
 }
 
 ul{
@@ -72,6 +73,12 @@ li{
     justify-content: space-between;
     align-items: center;
     padding: 1em;
+    cursor: grab;
+}
+
+.drag {
+    opacity: 1;
+    background-color: hsl(236, 9%, 61%);
 }
 
 li div {
@@ -103,8 +110,15 @@ img:last-child{
     cursor: pointer;
 }
 
+.tick {
+    opacity: 0;
+}
+
+.showtick {
+    opacity: 1;
+}
+
 .checked {
-    text-decoration: line-through;
     background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     background-size: cover;
 }
@@ -124,15 +138,15 @@ img:last-child{
     color: rgb(81, 70, 70);
 } 
 
-.actions button{
-    border: none;
-    background-color: white;
-    color: rgb(81, 70, 70);
-    cursor: pointer;
+.items-left {
+    opacity: .7;
 }
 
-.items-left {
-    cursor: default;
+.actions button{
+    border: none;
+    background-color: transparent;
+    color: rgb(81, 70, 70);
+    cursor: pointer;
 }
 
 .actions button:hover, .actions button:focus{
@@ -153,7 +167,15 @@ img:last-child{
 
 .mid-opt {
     display: none;
-} 
+}
+
+.draginfo {
+    font-size: 0.875rem;
+    color: rgb(81, 70, 70);
+    margin-top: 3em;
+    text-align: center;
+    opacity: .7;
+}
 
 @media (min-width:500px) {
     header {

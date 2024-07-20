@@ -1,6 +1,10 @@
 const task = document.querySelector(".task-entry");
 const taskList = document.getElementById("tasklist");
-
+const draglist = document.querySelector('ul');
+new Sortable(draglist, {
+    animation: 150,
+    ghostClass: 'drag'
+});
 
 
 function buildItem(event) {
@@ -12,7 +16,6 @@ function buildItem(event) {
         const secondButton = document.createElement("button");
         secondButton.classList.add("tocancel");
         const item = document.createElement("p");
-        item.classList.add("itemp");
         const firstImg = document.createElement('img');
         firstImg.src = "./images/icon-check.svg";
         firstImg.classList.add("tick");
@@ -50,11 +53,15 @@ function itemcounter() {
 
 function addCheck(event) {
     if (event.target.classList.contains("tick")) {
+        event.target.classList.add("showtick");
         event.target.parentElement.classList.add("checked");
         event.target.parentElement.parentElement.classList.add("check");
     }
-    event.target.classList.add("checked");
-    event.target.parentElement.classList.add("check");
+    else {
+        event.target.firstChild.classList.add("showtick");
+        event.target.classList.add("checked");
+        event.target.parentElement.classList.add("check");
+    }
 
     saveData();
 }
