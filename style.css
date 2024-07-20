@@ -78,7 +78,7 @@ li{
 
 .drag {
     opacity: 1;
-    background-color: hsl(236, 9%, 61%);
+    background-color: hsla(240, 9%, 61%, 0.197);
 }
 
 li div {
