@@ -195,5 +195,4 @@ new Sortable(draglist, {
     ghostClass: 'drag',
     delay: 2000,
     delayOnTouchOnly: true,
-    fallbackTolerance: 2px
 });
