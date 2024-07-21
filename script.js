@@ -1,10 +1,7 @@
 const task = document.querySelector(".task-entry");
 const taskList = document.getElementById("tasklist");
 const draglist = document.querySelector('ul');
-new Sortable(draglist, {
-    animation: 150,
-    ghostClass: 'drag'
-});
+
 
 
 function buildItem(event) {
@@ -53,18 +50,36 @@ function itemcounter() {
 
 function addCheck(event) {
     if (event.target.classList.contains("tick")) {
-        event.target.classList.add("showtick");
-        event.target.parentElement.classList.add("checked");
-        event.target.parentElement.parentElement.classList.add("check");
-    }
-    else {
-        event.target.firstChild.classList.add("showtick");
-        event.target.classList.add("checked");
-        event.target.parentElement.classList.add("check");
+        if (!(event.target.classList.contains("showtick"))) {
+            event.target.classList.add("showtick");
+            event.target.parentElement.classList.add("checked");
+            event.target.parentElement.parentElement.classList.add("check");
+        }
+        else if (event.target.classList.contains("showtick")) {
+            event.target.classList.remove("showtick");
+            event.target.parentElement.classList.remove("checked");
+            event.target.parentElement.parentElement.classList.remove("check");
+        }
+        
     }
 
+    else {
+        if (!(event.target.classList.contains("showtick"))) {
+            event.target.firstChild.classList.add("showtick");
+            event.target.classList.add("checked");
+            event.target.parentElement.classList.add("check");
+        }
+        else if (event.target.classList.contains("showtick")) {
+            event.target.firstChild.classList.remove("showtick");
+            event.target.classList.remove("checked");
+            event.target.parentElement.classList.remove("check");
+        }
+        
+    }
     saveData();
-}
+    }
+
+    
 
 function showAllTasks() {
     const allTasks = document.querySelectorAll("li");
@@ -110,6 +125,19 @@ function cancelTask(event) {
     saveData();
 }
 
+function changemode() {
+    const body = document.querySelector("body");
+    const modeimg = document.querySelector(".modeimg");
+    if (body.classList.contains("darkmode")) {
+        modeimg.src = "images/icon-moon.svg";
+        body.classList.remove("darkmode");
+    }
+    else if (!(body.classList.contains("darkmode"))) {
+        modeimg.src = "images/icon-sun.svg";
+        body.classList.add("darkmode");
+    }
+}
+
 function checkaction() {
     const checkButton = document.querySelectorAll(".tocheck");
     checkButton.forEach(element => {
@@ -138,6 +166,9 @@ function checkaction() {
 
     const clear = document.querySelector(".clear");
     clear.addEventListener("click", clearCompleted);
+
+    const mode = document.querySelector(".mode");
+    mode.addEventListener("click", changemode);
 }
 
 function createtask() {
@@ -158,3 +189,8 @@ function showTaskList(){
 }
 
 showTaskList();
+
+new Sortable(draglist, {
+    animation: 150,
+    ghostClass: 'drag'
+});
