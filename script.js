@@ -193,5 +193,7 @@ showTaskList();
 new Sortable(draglist, {
     animation: 150,
     ghostClass: 'drag',
-    delayOnTouchOnly: false
+    delay: 2000,
+    delayOnTouchOnly: true,
+    fallbackTolerance: 2px
 });
