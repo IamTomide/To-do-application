@@ -1,7 +1,8 @@
 const task = document.querySelector(".task-entry");
 const taskList = document.getElementById("tasklist");
 const draglist = document.querySelector('ul');
-
+const body = document.querySelector("body");
+const modeimg = document.querySelector(".modeimg");
 
 
 function buildItem(event) {
@@ -126,8 +127,6 @@ function cancelTask(event) {
 }
 
 function changemode() {
-    const body = document.querySelector("body");
-    const modeimg = document.querySelector(".modeimg");
     if (body.classList.contains("darkmode")) {
         modeimg.src = "images/icon-moon.svg";
         body.classList.remove("darkmode");
@@ -136,6 +135,7 @@ function changemode() {
         modeimg.src = "images/icon-sun.svg";
         body.classList.add("darkmode");
     }
+    saveData();
 }
 
 function checkaction() {
@@ -179,10 +179,20 @@ createtask();
 
 function saveData() {
     localStorage.setItem("data", taskList.innerHTML);
+    localStorage.setItem("data2", body.classList);
+    localStorage.setItem("modeimg", modeimg.src);
 }
 
 function showTaskList(){
     taskList.innerHTML = localStorage.getItem("data");
+    body.classList = localStorage.getItem("data2");
+    localStorage.getItem("order");
+    if (body.classList.contains("darkmode")) {
+        modeimg.src = "images/icon-sun.svg";
+    }
+    else {
+        modeimg.src = localStorage.getItem("modeimg");
+    }
     checkaction();
     itemcounter();
     showAllTasks();
@@ -193,6 +203,17 @@ showTaskList();
 new Sortable(draglist, {
     animation: 150,
     ghostClass: 'drag',
-    delay: 200,
+    delay: 120,
     delayOnTouchOnly: true,
+    store: {
+		get: function (sortable) {
+			var order = localStorage.getItem(sortable.options.group.name);
+			return order ? order.split('|') : [];
+		},
+		set: function (sortable) {
+			var order = sortable.toArray();
+			localStorage.setItem(sortable.options.group.name, order.join('|'));
+		}
+    }
+
 });
