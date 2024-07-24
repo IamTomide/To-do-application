@@ -191,7 +191,8 @@ function showTaskList(){
         modeimg.src = "images/icon-sun.svg";
     }
     else {
-        modeimg.src = localStorage.getItem("modeimg");
+        const storedimg = localStorage.getItem("modeimg");
+        modeimg.src = !storedimg ? "images/icon-moon.svg" : storedimg;
     }
     checkaction();
     itemcounter();
